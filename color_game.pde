@@ -118,7 +118,9 @@ void colorMatcher(){
   willColorsMatch = random(0, 1);
   if (willColorsMatch > 0.5){
     randomWord = randomColor;
-  }
+  }else if(willColorsMatch <=0.5 && randomWord == randomColor){
+    randomColor = randomColor + 1;
+}
 }
 
 ////tactile button functions
