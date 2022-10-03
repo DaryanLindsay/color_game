@@ -119,10 +119,13 @@ void colorMatcher(){
   if (willColorsMatch > 0.5){
     randomWord = randomColor;
   }else if(willColorsMatch <=0.5 && randomWord == randomColor){
-    randomColor = randomColor + 1;
+    if(randomColor < 3){
+     randomColor++;
+    }else if(randomColor == 3){
+      randomColor--;
 }
 }
-
+}
 ////tactile button functions
 //boolean touchingRect(int x, int y, int w, int h) {
 // if(mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h){
