@@ -30,6 +30,8 @@ void intro() {
    }else if(counter == 100){
     counter = 0;
    }
+   
+   
    //setup font
    textFont(font1);
  
@@ -43,24 +45,13 @@ void intro() {
      s = 5;
    }
    
-   //play button
-   strokeWeight(5);
-   fill(blue);
-   stroke(z);
-   textSize(25);
-   rect(400, 450, 100, 60, 30);
-   fill(black);
-   text("PLAY!", 455, 475);
-   
-   //make button tactile
-    if(mouseX > 400 && mouseX < 500 && mouseY > 450 && mouseY < 510) {
-    z = white;
-  }else{
-    z = black;
-  }
+   amazingRect(400, 450, 100, 60, 30, blue, "PLAY!", 25);
   
   //best score text
+  textSize(25);
+  fill(black);
   text("BEST: "+best, 500, 80);
+  
 }
 
 void introClicks() {
@@ -68,8 +59,6 @@ void introClicks() {
     mode = GAME;
     score = 0;
     colorMatcher();
-    //randomWord = (int) random(0, 3);
-    //randomColor = (int) random(0, 3);
   }
   
 }

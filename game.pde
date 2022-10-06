@@ -1,5 +1,5 @@
 void game() {
-  
+  strokeWeight(0);
   //drawing background
   fill(orange);
   rect(0, 0, width/2, height);
@@ -25,8 +25,23 @@ void game() {
     colorMatch = false;
   }
   
+  textSize(50);
   fill(black);
   text("SCORE: "+score, 450, 75);
+  
+  //timer
+  timer--;
+
+  //timer bar
+  bar = timer * 5;
+  fill(red);
+  rect(0, 30, bar, 15);
+  
+  if(timer == 0){
+    failure.rewind();
+      failure.play();
+      mode = GAMEOVER;
+    }
 }
 
 void gameClicks() {
@@ -37,28 +52,25 @@ void gameClicks() {
       success.rewind();
       success.play();
       colorMatcher();
-      //randomWord = (int) random(0, 3);
-      //randomColor = (int) random(0, 3);
+      timer = 120;
     }else{
       failure.rewind();
       failure.play();
       mode = GAMEOVER;
     }
     
-  } else if(mouseX > width/2 && mouseX < width && mouseY > 0 && mouseY < height) {
+  }else if(mouseX > width/2 && mouseX < width && mouseY > 0 && mouseY < height) {
     if(colorMatch == false) {
       score++;
       success.rewind();
       success.play();
       colorMatcher();
-      //randomWord = (int) random(0, 3);
-      //randomColor = (int) random(0, 3);
+      timer = 120;
     }else{
       failure.rewind();
       failure.play();
       mode = GAMEOVER;
   }
-  
   
   
 }

@@ -23,8 +23,7 @@ color blue = #00a5cf;
 color red = #e71d36;
 color orange = #ff9f1c;
 color green = #70e000;
-color z = black;//variables for outline of buttons
-color p = black;//
+
 
 //text size variable
 float s = 5; //size of text 
@@ -56,6 +55,13 @@ AudioPlayer song, success, failure;
 //font variables
 PFont font1;
 
+//timer variables
+int timer = 120;
+
+//variable for timer bar increasing when timer decreases
+int bar;
+
+
 
 void setup() {
   size(600, 600);
@@ -67,8 +73,8 @@ void setup() {
  numberOfFrames = 46;
  gif = new PImage[numberOfFrames];
  
-   while (i < numberOfFrames) {
-    gif[i] = loadImage("frame_"+i+"_delay-0.04s.gif");
+ while (i < numberOfFrames) {
+  gif[i] = loadImage("frame_"+i+"_delay-0.04s.gif");
  i++;
    }
    
@@ -116,32 +122,36 @@ void colorMatcher(){
   randomWord = (int) random(0, 3);
   randomColor = (int) random(0, 3); 
   willColorsMatch = random(0, 1);
-  if (willColorsMatch > 0.5){
+  if (willColorsMatch >= 0.5){
     randomWord = randomColor;
-  }else if(willColorsMatch <=0.5 && randomWord == randomColor){
-    if(randomColor < 3){
+  }else if(willColorsMatch <0.5 && randomWord == randomColor){
+    if(randomColor < 2){
      randomColor++;
-    }else if(randomColor == 3){
+    }else if(randomColor > 2){
       randomColor--;
 }
 }
 }
-////tactile button functions
-//boolean touchingRect(int x, int y, int w, int h) {
-// if(mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h){
-//   return true;
-// }else{
-//   return false;
-// }  
-//}
+//tactile button functions
+boolean touchingRect(int x, int y, int w, int h) {
+ if(mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h){
+   return true;
+ }else{
+   return false;
+ }  
+}
 
-//void tactileRect(int x, int y, int w, int h, int r, color f){
-//  fill(f);
-//  strokeWeight(10);
-//  if(touchingRect){
-//    stroke(white);
-//  }else{
-//    stroke(black);
-//  }
-//  rect(x, y, w, h, r);
-//}
+void amazingRect(int x, int y, int w, int h, int r, color f, String s, int z){
+  fill(f);
+  strokeWeight(5);
+  if(touchingRect(x, y, w, h)){
+    stroke(white);
+  }else{
+    stroke(black);
+  }
+  rect(x, y, w, h, r);
+  fill(black);
+  textAlign(CENTER, CENTER);
+  textSize(z);
+  text(s, x+(w/2), y + (h/2));
+}

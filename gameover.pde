@@ -1,5 +1,7 @@
 void gameover() {
   song.rewind();
+  timer = 120;
+  strokeWeight(10);
   background(black);
   textSize(100);
   fill(red);
@@ -13,34 +15,11 @@ void gameover() {
   text("SCORE: "+score, 170, 400);
   
   //buttons
-  fill(red);
-  stroke(z);
-  rect(width/3 - 50, 500, 75, 40);
-  stroke(p);
-  rect(width/3 * 2, 500, 75, 40);
+  amazingRect(width/3 - 50, 500, 75, 40, 90, red, "TRY AGAIN", 12);
+  amazingRect(width/3 * 2, 500, 75, 40, 90, red, "MENU", 12 );
+ 
   
-  //text for buttons
-  textSize(12);
-  textAlign(CENTER, CENTER);
-  fill(black);
-  text("TRY AGAIN", width/3 - 12.5, 520);
-  text("MENU", width/3 * 2 + 37.5, 520);
-  
-  
-  
-   //make button tactile
-    if(mouseX > width/3 - 50 && mouseX < width/3 + 25 && mouseY > 500 && mouseY < 540) {
-    z = white;
-  }else{
-    z = black;
-  }
-   
-   if(mouseX > width/3 * 2 && mouseX < width/3 * 2 + 75 && mouseY > 500 && mouseY < 540) {
-    p = white;
-  }else{
-    p = black;
-  }
-  
+ 
 }
 
 void gameoverClicks() {
@@ -48,8 +27,6 @@ void gameoverClicks() {
     mode = GAME;
     score = 0;
     colorMatcher();
-    //randomWord = (int) random(0, 3);
-    //randomColor = (int) random(0, 3);
   }else if(mouseX > width/3 * 2 && mouseX < width/3 * 2 + 75 && mouseY > 500 && mouseY < 540) {
     mode = INTRO;
   }
