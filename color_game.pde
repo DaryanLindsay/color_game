@@ -15,6 +15,8 @@ int mode;
 final int INTRO = 1;
 final int GAME = 2;
 final int GAMEOVER = 3;
+final int PAUSE = 4;
+final int CONTROLS = 5;
 
 //color variables
 color black = #011627;
@@ -62,7 +64,6 @@ int timer = 120;
 int bar;
 
 
-
 void setup() {
   size(600, 600);
   textAlign(CENTER, CENTER);
@@ -86,7 +87,7 @@ void setup() {
    
    //setup font
    font1 = createFont("font1.ttf", 100);
-
+   
 }
 
 void draw() {
@@ -99,6 +100,10 @@ void draw() {
     game();
   } else if (mode == GAMEOVER) {
     gameover();
+  }else if(mode == PAUSE) {
+    pause();
+  }else if(mode == CONTROLS){
+    controls();
   }
 }
 
@@ -110,7 +115,11 @@ void mouseClicked() {
  gameClicks(); 
  }else if(mode == GAMEOVER) {
    gameoverClicks();
- } else {
+ }else if(mode == PAUSE){
+   pauseClicks();
+ }else if(mode == CONTROLS){
+   controlsClicks();
+ }else{
     println("Mode error:" +mode);
   }
  

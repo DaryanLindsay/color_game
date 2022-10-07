@@ -52,6 +52,9 @@ void intro() {
   fill(black);
   text("BEST: "+best, 500, 80);
   
+  //controls
+  amazingRect(100, 450, 100, 60, 30, orange, "CONTROLS", 20); 
+  
 }
 
 void introClicks() {
@@ -59,6 +62,9 @@ void introClicks() {
     mode = GAME;
     score = 0;
     colorMatcher();
+  }else if(mouseX > 100 && mouseX < 200 && mouseY > 450 && mouseY < 510){
+    mode = CONTROLS;
+    
   }
   
 }
